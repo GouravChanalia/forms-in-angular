@@ -1,0 +1,7 @@
+form > div > div {
+    margin-bottom: 10px;
+}
+
+form > div > div > input{
+    margin-left: 10px;
+}

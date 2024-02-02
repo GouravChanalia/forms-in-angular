@@ -1,0 +1,61 @@
+<h3>Profile Editor Form</h3>
+<form [formGroup]="profileForm" (ngSubmit)="console('')">
+  <div>
+    <label for="firstName">First Name:</label>
+    <input
+      type="text"
+      name="firstName"
+      id="firstName"
+      formControlName="firstName"
+    />
+    <input type="button" value="Console" (click)="console('firstName')" />
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input
+      type="text"
+      name="lastName"
+      id="lastName"
+      formControlName="lastName"
+    />
+    <input type="button" value="Console" (click)="console('lastName')" />
+  </div>
+  <div formGroupName="address">
+    <h3>Address</h3>
+    <div>
+      <label for="street">Street:</label>
+      <input type="text" name="street" id="street" formControlName="street" />
+      <input type="button" value="Console" (click)="console('street')" />
+    </div>
+    <div>
+      <label for="city">City:</label>
+      <input type="text" name="city" id="city" formControlName="city" />
+      <input type="button" value="Console" (click)="console('city')" />
+    </div>
+    <div>
+      <label for="state">State:</label>
+      <input type="text" name="state" id="state" formControlName="state" />
+      <input type="button" value="Console" (click)="console('state')" />
+    </div>
+    <div>
+      <label for="zip">Zip:</label>
+      <input type="text" name="zip" id="zip" formControlName="zip" />
+      <input type="button" value="Console" (click)="console('zip')" />
+    </div>
+  </div>
+  <div>
+    <input type="submit" value="Submit" />
+  </div>
+  <div>
+    <p>Full Name:(using async) {{ profileForm.valueChanges | async | json }}</p>
+    <p>Full Name:(using subscribe) {{ fullName }}</p>
+    <p>
+      Full Name:(using value)
+      {{
+        profileForm.get("firstName").value +
+          " " +
+          profileForm.get("lastName").value
+      }}
+    </p>
+  </div>
+</form>

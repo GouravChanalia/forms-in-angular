@@ -1,0 +1,81 @@
+<h2>Forms In Angular</h2>
+<p>
+  Angular provides two different approaches to handle user inputs through forms:
+</p>
+<ol>
+  <li>Reactive (model driven)</li>
+  <li>Template driven</li>
+</ol>
+<h3>Scalability</h3>
+<p>
+  If forms are a central part of your application, scalability is very
+  important. Being able to use form models across components is critical.
+</p>
+<p>
+  Reactive forms are more scalable than template-driven forms. They provide
+  direct access to underlying Form API, and use synchronous data flow between
+  the view and data model, which makes creating large scale forms easier.
+</p>
+<p>
+  Template-driven forms on the other hand focus on simple scenarios and are not
+  as resuable. They abstract away the underlying Form API, and use asynchronous
+  data flow between the view and data model. The abstraction of template-driven
+  forms also affects testing.
+</p>
+<h3>Common form foundation classes</h3>
+<ul>
+  <li>
+    FormControl: Tracks the value and validation status of an individual form
+    control.
+  </li>
+  <li>
+    FormGroup: Tracks the same values and status for a collection of form
+    controls.
+  </li>
+  <li>
+    FormArray: Tracks the same values and status for an array of form controls.
+  </li>
+  <li>
+    ControlValueAccessor: Creates a bridge between Angular FormControl instances
+    and built-in DOM elements.
+  </li>
+</ul>
+<h3>Form Validation</h3>
+<p>
+  Validation is an integral part of managing any set of forms. Whether you're
+  checking for required fields or querying an external API for an existing
+  username, Angular provides a set of built-in validators as well as the ability
+  to create custom validators.
+</p>
+<ul>
+  <li>
+    Reactive forms: Define custom validators as functions that receive a control
+    to validate
+  </li>
+  <li>
+    Template-driven forms: Tied to template directives, and must provide custom
+    validator directives that wrap validation functions
+  </li>
+</ul>
+<div>
+  Favourite Color:
+  <input
+    type="text"
+    name="favourite-color"
+    id="favourite-color"
+    [formControl]="favouriteColorControl"
+  />
+  <input type="button" value="Console" (click)="console()" />
+  <input type="button" value="Update" (click)="update()" />
+  <p>
+    Value:(using observable) {{ favouriteColorControl.valueChanges | async }}
+  </p>
+  <p>Value:(using subscribe) {{ favouriteColor }}</p>
+  <p>
+    Value:(using form control value property) {{ favouriteColorControl.value }}
+  </p>
+</div>
+<hr />
+<app-profile-editor></app-profile-editor>
+<hr />
+<app-user-details></app-user-details>
